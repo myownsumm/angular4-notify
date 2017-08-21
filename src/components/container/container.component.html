@@ -1,4 +1,4 @@
 <div class="notifications-container">
     <angular4-notify-notification *ngFor="let notification of notifications"
-                                  [notification]="notification"></angular4-notify-notification>
+                                  [notification]="notification" (dismissNotify)="onDismissNotify($event)"></angular4-notify-notification>
 </div>

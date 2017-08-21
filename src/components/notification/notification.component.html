@@ -1,6 +1,6 @@
-<div class="alert alert-dismissible" [class]="notification.type">
+<div class="notify {{notification.type}}">
     <a type="button" class="close">
-        <i class="material-icons">clear</i>
+        <i class="material-icons" (click)="dismiss()">clear</i>
     </a>
     {{notification.message}}
 </div>

@@ -32,4 +32,10 @@ export class ContainerComponent implements OnInit, OnDestroy {
         this.sub.unsubscribe();
     }
 
+    onDismissNotify(n: Notify) {
+        return this.notifications.splice(
+            this.notifications.indexOf(n),
+            1
+        );
+    }
 }

@@ -1,3 +1,26 @@
-h3 {
-    color: red;
+.notifications-container {
+    width: 100%;
+}
+
+.notify {
+    width: 100%;
+    padding: 4px 8px;
+}
+
+.notify i {
+    margin-right: 16px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.error {
+    background-color: #ef4a4a;
+}
+
+.info {
+    background-color: #60db8f;
+}
+
+.warning {
+    background-color: #dbb460;
 }
