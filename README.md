@@ -8,64 +8,60 @@ To install this library, run:
 $ npm install angular4-notify --save
 ```
 
-## Consuming your library
+## How to use
 
-Once you have published your library to npm, you can import your library in any Angular application by running:
-
-```bash
-$ npm install angular4-notify
-```
-
-and then from your Angular `AppModule`:
+Import notifications module and service:
 
 ```typescript
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-
-// Import your library
-import { SampleModule } from 'angular4-notify';
+import {NotificationsModule, NotificationsService} from 'angular4-notify';
 
 @NgModule({
   declarations: [
-    AppComponent
+    YouComponent
   ],
   imports: [
-    BrowserModule,
+    SomeModule,
 
-    // Specify your library as an import
-    LibraryModule
+    //add to imports
+    NotificationsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+      //add to providers
+      NotificationsService
+  ],
+  bootstrap: [YouComponent]
 })
-export class AppModule { }
+export class YourModule {}
 ```
 
-Once your library is imported, you can use its components, directives and pipes in your Angular application:
+Once your library is imported, you can use its service in your Angular application:
 
 ```xml
 <!-- You can now use your library component in app.component.html -->
-<h1>
-  {{title}}
-</h1>
-<sampleComponent></sampleComponent>
+
+<header></header>
+
+<angular4-notify-notifications-container></angular4-notify-notifications-container>
+
+<router-outlet></router-outlet>
 ```
 
-## Development
+## Adding notifications
 
-To generate all `*.js`, `*.d.ts` and `*.metadata.json` files:
+To add notifications to be rendered firstly inject NotificationsService into your component:
 
-```bash
-$ npm run build
-```
+```typescript
+import {NotificationsService} from 'angular4-notify';
 
-To lint all `*.ts` files:
+constructor(protected notificationsService: NotificationsService) {}
+````
+and then use following methods:
 
-```bash
-$ npm run lint
-```
+```typescript
+this.notificationsService.addError('Error message here');
+this.notificationsService.addWarning('Some warning message');
+this.notificationsService.addInfo('Information message');
+````
 
 ## License
 
