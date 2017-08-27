@@ -18,12 +18,23 @@ export class ContainerComponent implements OnInit, OnDestroy {
         this.notifications.push(notification);
     }
 
+    protected findSimilar(notification: Notify) {
+        return this.notifications.find(existingNotification => {
+            return existingNotification.message == notification.message
+                && existingNotification.type == notification.type
+        });
+    }
+
     constructor(protected notificationsService: NotificationsService) {
     }
 
     ngOnInit() {
         this.sub = this.notificationsService.notifications
             .subscribe((n: Notify) => {
+                if (this.findSimilar(n)) {
+                    return;
+                }
+
                 this.render(n);
             });
     }

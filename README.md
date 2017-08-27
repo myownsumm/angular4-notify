@@ -65,6 +65,7 @@ this.notificationsService.addInfo('Information message');
 
 ## Changelist
 
+**1.1.0** Prevent from similar messages doubling.
 **1.0.1** First stable version
 
 ## License
