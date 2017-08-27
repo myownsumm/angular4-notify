@@ -63,6 +63,10 @@ this.notificationsService.addWarning('Some warning message');
 this.notificationsService.addInfo('Information message');
 ````
 
+## Changelist
+
+**1.0.1** First stable version
+
 ## License
 
 MIT © [alexander.poltoratskiy](mailto:myownsumm@gmail.com)
