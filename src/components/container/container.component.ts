@@ -54,6 +54,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.sub.unsubscribe();
+        this.routerSub.unsubscribe();
     }
 
     onDismissNotify(n: Notification) {
