@@ -2,6 +2,10 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {Notification} from '../../models';
 import {NotificationsService} from '../../services/notifications.service';
+import {Router, NavigationStart} from "@angular/router";
+
+import 'rxjs/add/operator/filter';
+
 
 @Component({
     selector: 'angular4-notify-notifications-container',
@@ -12,6 +16,8 @@ import {NotificationsService} from '../../services/notifications.service';
 })
 export class ContainerComponent implements OnInit, OnDestroy {
     protected sub: Subscription;
+    protected routerSub: Subscription;
+
     protected notifications: Notification[] = [];
 
     protected render(notification) {
@@ -25,7 +31,8 @@ export class ContainerComponent implements OnInit, OnDestroy {
         });
     }
 
-    constructor(protected notificationsService: NotificationsService) {
+    constructor(protected notificationsService: NotificationsService,
+                protected router: Router) {
     }
 
     ngOnInit() {
@@ -36,6 +43,12 @@ export class ContainerComponent implements OnInit, OnDestroy {
                 }
 
                 this.render(n);
+            });
+
+        this.routerSub = this.router.events
+            .filter(event => event instanceof NavigationStart)
+            .subscribe((e) => {
+                this.notifications = [];
             });
     }
 
