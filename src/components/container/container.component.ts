@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
-import {Notify} from '../../models';
+import {Notification} from '../../models';
 import {NotificationsService} from '../../services/notifications.service';
 
 @Component({
@@ -12,13 +12,13 @@ import {NotificationsService} from '../../services/notifications.service';
 })
 export class ContainerComponent implements OnInit, OnDestroy {
     protected sub: Subscription;
-    protected notifications: Notify[] = [];
+    protected notifications: Notification[] = [];
 
     protected render(notification) {
         this.notifications.push(notification);
     }
 
-    protected findSimilar(notification: Notify) {
+    protected findSimilar(notification: Notification) {
         return this.notifications.find(existingNotification => {
             return existingNotification.message == notification.message
                 && existingNotification.type == notification.type
@@ -30,7 +30,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.sub = this.notificationsService.notifications
-            .subscribe((n: Notify) => {
+            .subscribe((n: Notification) => {
                 if (this.findSimilar(n)) {
                     return;
                 }
@@ -43,7 +43,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
         this.sub.unsubscribe();
     }
 
-    onDismissNotify(n: Notify) {
+    onDismissNotify(n: Notification) {
         return this.notifications.splice(
             this.notifications.indexOf(n),
             1

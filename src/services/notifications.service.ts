@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
-import {Notify} from '../models';
+import {Notification} from '../models';
 
 const TYPE_INFO = 'info';
 const TYPE_ERROR = 'error';
@@ -12,14 +12,14 @@ export class NotificationsService {
         this.notifications = new Subject();
     }
 
-    public notifications: Subject<Notify>;
+    public notifications: Subject<Notification>;
 
     private pushNotification(notification) {
         this.notifications.next(notification);
     }
 
     public addInfo(text: string) {
-        let notification = new Notify();
+        let notification = new Notification();
 
         notification.message = text;
         notification.type = TYPE_INFO;
@@ -28,7 +28,7 @@ export class NotificationsService {
     }
 
     public addError(text: string) {
-        let notification = new Notify();
+        let notification = new Notification();
 
         notification.message = text;
         notification.type = TYPE_ERROR;
@@ -37,7 +37,7 @@ export class NotificationsService {
     }
 
     public addWarning(text: string) {
-        let notification = new Notify();
+        let notification = new Notification();
 
         notification.message = text;
         notification.type = TYPE_WARNING;

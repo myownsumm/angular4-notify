@@ -1,4 +1,4 @@
-export class Notify {
+export class Notification {
     message: string;
     type: string;
 }
