@@ -34,7 +34,7 @@ import {NotificationsModule, NotificationsService} from 'angular4-notify';
 export class YourModule {}
 ```
 
-Once your library is imported, you can use its service in your Angular application:
+Once library is imported, you can use its service in your Angular application:
 
 ```xml
 <!-- You can now use your library component in app.component.html -->
@@ -65,7 +65,7 @@ this.notificationsService.addInfo('Information message');
 
 ## Changelist
 
-**1.2.0** resetting notifications array while navigating with router.
+**1.2.0** Clear notifications after navigation start.
 
 **1.1.0** Prevent from similar messages doubling.
 
