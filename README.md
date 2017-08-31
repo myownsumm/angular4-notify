@@ -71,6 +71,11 @@ this.notificationsService.addInfo('Information message');
 
 **1.0.1** First stable version
 
+##TODO
+* allow customize styles
+* provide more flexible notifications` container position on page
+* implement "dialog" notification feature
+
 ## License
 
 MIT © [alexander.poltoratskiy](mailto:myownsumm@gmail.com)
